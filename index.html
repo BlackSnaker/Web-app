@@ -25,6 +25,19 @@
       <p id="islandMessage">Сообщение</p>
     </div>
 
+    <!-- Прогресс-бар до ближайшего события -->
+    <section class="progress-container glass">
+      <h3>До ближайшего события</h3>
+      <div class="progress-circle">
+        <span id="time-remaining">00:00</span>
+        <svg>
+          <circle cx="60" cy="60" r="50"></circle>
+          <circle cx="60" cy="60" r="50" id="progress"></circle>
+        </svg>
+      </div>
+      <p id="next-event">Событие: Нет запланированных событий</p>
+    </section>
+
     <div class="content">
       <section class="tasks glass">
         <h3>Задачи</h3>
@@ -46,9 +59,6 @@
         <h3>Календарь</h3>
         <div id="calendar"></div>
         <div class="event-form">
-          <input type="text" id="eventTitle" placeholder="Событие">
-          <input type="date" id="eventDate">
-          <button onclick="addEvent()">Добавить</button>
         </div>
         <ul id="eventList"></ul>
       </section>

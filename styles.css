@@ -1,8 +1,17 @@
-/* Анимация плавного появления с легким увеличением */
-@keyframes fadeInSlide {
+/* Плавный скроллинг для всей страницы */
+html {
+	scroll-behavior: smooth;
+  }
+  
+  /* Анимация плавного появления с мягким увеличением */
+  @keyframes fadeInSlide {
 	0% {
 	  opacity: 0;
-	  transform: translateY(20px) scale(0.95);
+	  transform: translateY(30px) scale(0.9);
+	}
+	80% {
+	  opacity: 1;
+	  transform: translateY(-10px) scale(1.02);
 	}
 	100% {
 	  opacity: 1;
@@ -37,6 +46,7 @@
 	animation: fadeInSlide 1s ease-out forwards;
   }
   
+  /* Плавный скроллинг для контейнера */
   .container {
 	width: 100%;
 	max-width: 430px;
@@ -47,6 +57,7 @@
 	gap: 20px;
 	max-height: 90vh;
 	overflow-y: auto;
+	scroll-behavior: smooth;
 	animation: fadeInSlide 1.2s ease-out forwards;
   }
   
@@ -60,6 +71,7 @@
 	font-size: 0.9em;
 	color: #8e8e93;
 	margin: 0;
+	animation: fadeInSlide 1.5s ease-out forwards;
   }
   
   .header-content {
@@ -106,7 +118,7 @@
 	border-radius: 15px;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 	padding: 20px;
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	transition: transform 0.4s ease, box-shadow 0.4s ease;
 	margin-bottom: 20px;
 	animation: fadeInSlide 1.5s ease-out forwards;
   }
@@ -139,7 +151,7 @@
 	color: #f2f2f7;
 	font-size: 1em;
 	outline: none;
-	transition: background 0.3s ease, transform 0.2s ease;
+	transition: background 0.3s ease, transform 0.3s ease;
 	backdrop-filter: blur(8px);
 	margin-top: 8px;
   }
@@ -288,5 +300,54 @@
 	display: flex;
 	opacity: 1;
 	transform: translateX(-50%) translateY(0) scale(1);
+  }
+  
+  /* Прогресс-бар для времени до ближайшего события */
+  .progress-container {
+	text-align: center;
+	padding: 20px;
+	margin-top: 20px;
+	position: relative;
+  }
+  
+  .progress-circle {
+	position: relative;
+	width: 120px;
+	height: 120px;
+	margin: 0 auto;
+  }
+  
+  .progress-circle svg {
+	width: 120px;
+	height: 120px;
+	transform: rotate(-90deg);
+  }
+  
+  .progress-circle circle {
+	fill: none;
+	stroke-width: 10;
+	stroke: rgba(255, 255, 255, 0.1);
+  }
+  
+  #progress {
+	stroke: #ff3b30;
+	stroke-dasharray: 314;
+	stroke-dashoffset: 314;
+	transition: stroke-dashoffset 0.5s ease;
+  }
+  
+  .progress-circle span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 1.5em;
+	color: #f2f2f7;
+  }
+  
+  #next-event {
+	color: #8e8e93;
+	font-size: 0.9em;
+	margin-top: 10px;
   }
   
