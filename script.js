@@ -25,7 +25,7 @@ if ("serviceWorker" in navigator) {
 	dateElement.textContent = today.toLocaleDateString('ru-RU', options);
   }
   
-  //Dynamic Island"
+  // Показ уведомления в стиле "Dynamic Island"
   function showDynamicIsland(message) {
 	const dynamicIsland = document.getElementById("dynamicIsland");
 	const islandMessage = document.getElementById("islandMessage");
@@ -44,7 +44,7 @@ if ("serviceWorker" in navigator) {
 	}, 3000);
   }
   
-  //добавление задачи с сохранением в localStorage
+  // Функция добавления задачи с сохранением в localStorage
   function addTask() {
 	const taskInput = document.getElementById("taskInput");
 	const taskList = document.getElementById("taskList");
@@ -118,7 +118,7 @@ if ("serviceWorker" in navigator) {
 	}, 500);
   }
   
-  //календарь
+  // Инициализация календаря
   document.addEventListener("DOMContentLoaded", () => {
 	displayCurrentDate();
 	loadTasks();
@@ -190,7 +190,7 @@ if ("serviceWorker" in navigator) {
 	});
   }
   
-  // сохранение события в localStorage
+  // Подсветка выбранного дня и сохранение события в localStorage
   function highlightSelectedDay(dayDiv) {
 	document.querySelectorAll(".calendar-day").forEach((day) => day.classList.remove("highlighted"));
 	dayDiv.classList.add("highlighted");
@@ -227,7 +227,7 @@ if ("serviceWorker" in navigator) {
 	}
   }
   
-
+  // Скрытие всплывающей подсказки
   function hideEventTooltip(event) {
 	const tooltip = event.target.querySelector(".event-tooltip");
 	if (tooltip) {
@@ -253,14 +253,14 @@ if ("serviceWorker" in navigator) {
 	const eventTitle = events[nextEvent.toISOString().split("T")[0]];
 	document.getElementById("next-event").textContent = `Событие: ${eventTitle}`;
   
-	// оставшееся время в часах, минутах и секундах
+	// Рассчитываем оставшееся время в часах, минутах и секундах
 	const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
 	const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
 	const seconds = Math.floor((timeDifference / 1000) % 60);
 	document.getElementById("time-remaining").textContent = 
 	  `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   
-	// прогресс-бар
+	// Обновляем прогресс-бар
 	const totalMinutes = 24 * 60;
 	const minutesUntilEvent = (nextEvent - new Date(currentTime.setHours(0, 0, 0, 0))) / (1000 * 60);
 	const progressPercent = minutesUntilEvent / totalMinutes;

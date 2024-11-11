@@ -31,6 +31,18 @@ html {
 	}
   }
   
+  /* Анимация для плавного появления модального окна */
+  @keyframes modalFadeIn {
+	0% {
+	  opacity: 0;
+	  transform: scale(0.9);
+	}
+	100% {
+	  opacity: 1;
+	  transform: scale(1);
+	}
+  }
+  
   /* Основной стиль */
   body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -46,7 +58,7 @@ html {
 	animation: fadeInSlide 1s ease-out forwards;
   }
   
-  /* Плавный скроллинг для контейнера */
+  /* Контейнер для всего контента */
   .container {
 	width: 100%;
 	max-width: 430px;
@@ -214,6 +226,7 @@ html {
 	cursor: pointer;
   }
   
+  /* Стили для календаря */
   .calendar-day {
 	background: rgba(255, 255, 255, 0.1);
 	backdrop-filter: blur(5px);
@@ -237,7 +250,6 @@ html {
 	transform: scale(1.1);
   }
   
-  /* Подсветка выбранного дня */
   .highlighted {
 	background-color: rgba(255, 69, 58, 0.6);
 	color: white;
@@ -246,7 +258,6 @@ html {
 	animation: scaleIn 0.4s ease-out forwards;
   }
   
-  /* Всплывающая подсказка */
   .event-tooltip {
 	position: absolute;
 	bottom: 50px;
@@ -269,7 +280,6 @@ html {
 	transform: translateX(-50%) scale(1);
   }
   
-  /* Dynamic Island Notification */
   .dynamic-island {
 	position: fixed;
 	top: 20px;
@@ -302,7 +312,7 @@ html {
 	transform: translateX(-50%) translateY(0) scale(1);
   }
   
-  /* Прогресс-бар для времени до ближайшего события */
+  /* Прогресс-бар */
   .progress-container {
 	text-align: center;
 	padding: 20px;
@@ -349,5 +359,76 @@ html {
 	color: #8e8e93;
 	font-size: 0.9em;
 	margin-top: 10px;
+  }
+  
+  /* Стили для мобильного модального окна события */
+  .event-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 200;
+	animation: modalFadeIn 0.4s ease-out forwards;
+  }
+  
+  .event-modal .modal-content {
+	background: #1c1c1e;
+	color: #f2f2f7;
+	padding: 20px;
+	border-radius: 10px;
+	width: 90%;
+	max-width: 400px;
+	text-align: center;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+	animation: modalFadeIn 0.4s ease-out forwards;
+  }
+  
+  .event-modal h3 {
+	font-size: 1.5em;
+	margin-bottom: 10px;
+	color: #ff3b30;
+  }
+  
+  .event-modal input {
+	width: 100%;
+	padding: 12px;
+	border: none;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.15);
+	color: #f2f2f7;
+	font-size: 1em;
+	outline: none;
+	margin-bottom: 10px;
+  }
+  
+  .event-modal button {
+	background-color: #ff3b30;
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: 8px;
+	width: 100%;
+	margin-top: 10px;
+	font-size: 1em;
+	cursor: pointer;
+	transition: background 0.3s ease;
+  }
+  
+  .event-modal button:hover {
+	background-color: #ff453a;
+  }
+  
+  .event-modal #cancelEventButton {
+	background-color: #8e8e93;
+	margin-top: 10px;
+  }
+  
+  .event-modal #cancelEventButton:hover {
+	background-color: #6e6e73;
   }
   
