@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Органайзер</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1c1c1e">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2 class="date" id="currentDate"></h2>
+      <div class="header-content">
+        <h1>Органайзер</h1>
+        <div class="user-icon">
+          <img src="https://via.placeholder.com/40" alt="User Icon">
+        </div>
+      </div>
+    </header>
+
+    <!-- Dynamic Island -->
+    <div id="dynamicIsland" class="dynamic-island hidden">
+      <p id="islandMessage">Сообщение</p>
+    </div>
+
+    <div class="content">
+      <section class="tasks glass">
+        <h3>Задачи</h3>
+        <ul id="taskList"></ul>
+        <div class="input-group">
+          <input type="text" id="taskInput" placeholder="Добавить задачу">
+          <button onclick="addTask()">+</button>
+        </div>
+      </section>
+
+      <section class="notes glass">
+        <h3>Заметки</h3>
+        <div id="noteList"></div>
+        <textarea id="noteInput" placeholder="Напишите заметку..."></textarea>
+        <button onclick="addNote()">Сохранить заметку</button>
+      </section>
+
+      <section class="calendar glass">
+        <h3>Календарь</h3>
+        <div id="calendar"></div>
+        <div class="event-form">
+          <input type="text" id="eventTitle" placeholder="Событие">
+          <input type="date" id="eventDate">
+          <button onclick="addEvent()">Добавить</button>
+        </div>
+        <ul id="eventList"></ul>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

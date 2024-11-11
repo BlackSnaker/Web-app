@@ -1,0 +1,292 @@
+/* Анимация плавного появления с легким увеличением */
+@keyframes fadeInSlide {
+	0% {
+	  opacity: 0;
+	  transform: translateY(20px) scale(0.95);
+	}
+	100% {
+	  opacity: 1;
+	  transform: translateY(0) scale(1);
+	}
+  }
+  
+  /* Анимация для появления Dynamic Island с мягким увеличением */
+  @keyframes islandPopIn {
+	0% {
+	  opacity: 0;
+	  transform: translateX(-50%) translateY(-10px) scale(0.95);
+	}
+	100% {
+	  opacity: 1;
+	  transform: translateX(-50%) translateY(0) scale(1);
+	}
+  }
+  
+  /* Основной стиль */
+  body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	background: linear-gradient(135deg, #1c1c1e, #2a2a2d);
+	color: #f2f2f7;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 100vh;
+	overflow-x: hidden;
+	animation: fadeInSlide 1s ease-out forwards;
+  }
+  
+  .container {
+	width: 100%;
+	max-width: 430px;
+	padding: 20px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-height: 90vh;
+	overflow-y: auto;
+	animation: fadeInSlide 1.2s ease-out forwards;
+  }
+  
+  header {
+	text-align: left;
+	padding-bottom: 10px;
+	position: relative;
+  }
+  
+  header .date {
+	font-size: 0.9em;
+	color: #8e8e93;
+	margin: 0;
+  }
+  
+  .header-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10px;
+  }
+  
+  header h1 {
+	font-size: 2em;
+	color: #f2f2f7;
+	margin: 5px 0;
+	animation: fadeInSlide 1.3s ease-out forwards;
+  }
+  
+  .user-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .user-icon:hover {
+	transform: scale(1.1);
+	box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  }
+  
+  .user-icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	animation: fadeInSlide 1.2s ease-out forwards;
+  }
+  
+  /* Glassmorphism стиль */
+  .glass {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
+	border-radius: 15px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+	padding: 20px;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	margin-bottom: 20px;
+	animation: fadeInSlide 1.5s ease-out forwards;
+  }
+  
+  .glass:hover {
+	transform: scale(1.03);
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  }
+  
+  h3 {
+	font-size: 1.3em;
+	color: #f2f2f7;
+	margin-bottom: 15px;
+	font-weight: 600;
+	animation: fadeInSlide 1.6s ease-out forwards;
+  }
+  
+  .input-group {
+	display: flex;
+	gap: 10px;
+	margin-top: 10px;
+  }
+  
+  input, textarea {
+	width: 100%;
+	padding: 12px;
+	border: none;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.15);
+	color: #f2f2f7;
+	font-size: 1em;
+	outline: none;
+	transition: background 0.3s ease, transform 0.2s ease;
+	backdrop-filter: blur(8px);
+	margin-top: 8px;
+  }
+  
+  input:focus, textarea:focus {
+	background: rgba(255, 255, 255, 0.2);
+	transform: scale(1.02);
+	box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15);
+  }
+  
+  button {
+	background-color: #ff3b30;
+	color: white;
+	border: none;
+	padding: 12px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1.2);
+	font-size: 1.2em;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
+	animation: fadeInSlide 1.4s ease-out forwards;
+  }
+  
+  button:hover {
+	background-color: #ff453a;
+	transform: scale(1.08);
+  }
+  
+  ul, #noteList {
+	list-style-type: none;
+	padding: 0;
+	margin: 10px 0 0 0;
+  }
+  
+  .task-item, .note-item, .event-item {
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(8px);
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 8px;
+	color: #f2f2f7;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease;
+	animation: fadeInSlide 0.6s ease forwards;
+  }
+  
+  .task-item:hover, .note-item:hover, .event-item:hover {
+	transform: translateY(-3px) scale(1.02);
+  }
+  
+  .task-item .delete-btn, .note-item .delete-btn {
+	color: #ff3b30;
+	cursor: pointer;
+  }
+  
+  .calendar-day {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(5px);
+	border-radius: 10px;
+	padding: 5px;
+	text-align: center;
+	color: #f2f2f7;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	margin: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	transition: background 0.3s ease, transform 0.3s ease;
+	animation: fadeInSlide 1.7s ease-out forwards;
+  }
+  
+  .calendar-day:hover {
+	background: rgba(255, 255, 255, 0.2);
+	transform: scale(1.1);
+  }
+  
+  /* Подсветка выбранного дня */
+  .highlighted {
+	background-color: rgba(255, 69, 58, 0.6);
+	color: white;
+	position: relative;
+	border-radius: 50%;
+	animation: scaleIn 0.4s ease-out forwards;
+  }
+  
+  /* Всплывающая подсказка */
+  .event-tooltip {
+	position: absolute;
+	bottom: 50px;
+	left: 50%;
+	transform: translateX(-50%) scale(0.9);
+	background-color: rgba(255, 255, 255, 0.9);
+	color: #333;
+	padding: 5px 10px;
+	border-radius: 8px;
+	font-size: 0.8em;
+	white-space: nowrap;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	z-index: 10;
+	opacity: 0;
+	transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  
+  .calendar-day:hover .event-tooltip {
+	opacity: 1;
+	transform: translateX(-50%) scale(1);
+  }
+  
+  /* Dynamic Island Notification */
+  .dynamic-island {
+	position: fixed;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%) translateY(-10px);
+	background-color: rgba(30, 30, 30, 0.9);
+	color: white;
+	padding: 10px 20px;
+	border-radius: 25px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+	font-size: 1em;
+	font-weight: 500;
+	opacity: 0;
+	animation: islandPopIn 0.6s ease-out forwards;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 200px;
+	text-align: center;
+	z-index: 100;
+  }
+  
+  .hidden {
+	display: none;
+  }
+  
+  .visible {
+	display: flex;
+	opacity: 1;
+	transform: translateX(-50%) translateY(0) scale(1);
+  }
+  
