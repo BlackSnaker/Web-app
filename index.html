@@ -20,17 +20,19 @@
       </div>
     </header>
 
-    <!-- Dynamic Island -->
-    <div id="dynamicIsland" class="dynamic-island hidden">
-      <p id="islandMessage">Сообщение</p>
-    </div>
-
     <!-- Прогресс-бар до ближайшего события -->
     <section class="progress-container glass">
       <h3>До ближайшего события</h3>
       <div class="progress-circle">
+        <div class="outer-ring"></div> <!-- Внешний вращающийся круг -->
         <span id="time-remaining">00:00</span>
         <svg>
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color: #ff7e5f; stop-opacity: 1;" />
+              <stop offset="100%" style="stop-color: #feb47b; stop-opacity: 1;" />
+            </linearGradient>
+          </defs>
           <circle cx="60" cy="60" r="50"></circle>
           <circle cx="60" cy="60" r="50" id="progress"></circle>
         </svg>
@@ -58,6 +60,7 @@
       <section class="calendar glass">
         <h3>Календарь</h3>
         <div id="calendar"></div>
+        <!-- Форма для добавления событий -->
         <div class="event-form">
           <input type="text" id="eventTitle" placeholder="Событие">
           <input type="date" id="eventDate">

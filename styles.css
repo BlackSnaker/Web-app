@@ -1,434 +1,248 @@
 /* Плавный скроллинг для всей страницы */
 html {
-	scroll-behavior: smooth;
-  }
-  
-  /* Анимация плавного появления с мягким увеличением */
-  @keyframes fadeInSlide {
-	0% {
-	  opacity: 0;
-	  transform: translateY(30px) scale(0.9);
-	}
-	80% {
-	  opacity: 1;
-	  transform: translateY(-10px) scale(1.02);
-	}
-	100% {
-	  opacity: 1;
-	  transform: translateY(0) scale(1);
-	}
-  }
-  
-  /* Анимация для появления Dynamic Island с мягким увеличением */
-  @keyframes islandPopIn {
-	0% {
-	  opacity: 0;
-	  transform: translateX(-50%) translateY(-10px) scale(0.95);
-	}
-	100% {
-	  opacity: 1;
-	  transform: translateX(-50%) translateY(0) scale(1);
-	}
-  }
-  
-  /* Анимация для плавного появления модального окна */
-  @keyframes modalFadeIn {
-	0% {
-	  opacity: 0;
-	  transform: scale(0.9);
-	}
-	100% {
-	  opacity: 1;
-	  transform: scale(1);
-	}
-  }
-  
-  /* Основной стиль */
-  body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-	background: linear-gradient(135deg, #1c1c1e, #2a2a2d);
-	color: #f2f2f7;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	min-height: 100vh;
-	overflow-x: hidden;
-	animation: fadeInSlide 1s ease-out forwards;
-  }
-  
-  /* Контейнер для всего контента */
-  .container {
-	width: 100%;
-	max-width: 430px;
-	padding: 20px;
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	max-height: 90vh;
-	overflow-y: auto;
-	scroll-behavior: smooth;
-	animation: fadeInSlide 1.2s ease-out forwards;
-  }
-  
-  header {
-	text-align: left;
-	padding-bottom: 10px;
-	position: relative;
-  }
-  
-  header .date {
-	font-size: 0.9em;
-	color: #8e8e93;
-	margin: 0;
-	animation: fadeInSlide 1.5s ease-out forwards;
-  }
-  
-  .header-content {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-top: 10px;
-  }
-  
-  header h1 {
-	font-size: 2em;
-	color: #f2f2f7;
-	margin: 5px 0;
-	animation: fadeInSlide 1.3s ease-out forwards;
-  }
-  
-  .user-icon {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	overflow: hidden;
-	border: 2px solid rgba(255, 255, 255, 0.2);
-	background-color: rgba(255, 255, 255, 0.1);
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .user-icon:hover {
-	transform: scale(1.1);
-	box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-  }
-  
-  .user-icon img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	animation: fadeInSlide 1.2s ease-out forwards;
-  }
-  
-  /* Glassmorphism стиль */
-  .glass {
-	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(15px);
-	-webkit-backdrop-filter: blur(15px);
-	border-radius: 15px;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-	padding: 20px;
-	transition: transform 0.4s ease, box-shadow 0.4s ease;
-	margin-bottom: 20px;
-	animation: fadeInSlide 1.5s ease-out forwards;
-  }
-  
-  .glass:hover {
-	transform: scale(1.03);
-	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-  }
-  
-  h3 {
-	font-size: 1.3em;
-	color: #f2f2f7;
-	margin-bottom: 15px;
-	font-weight: 600;
-	animation: fadeInSlide 1.6s ease-out forwards;
-  }
-  
-  .input-group {
-	display: flex;
-	gap: 10px;
-	margin-top: 10px;
-  }
-  
-  input, textarea {
-	width: 100%;
-	padding: 12px;
-	border: none;
-	border-radius: 10px;
-	background: rgba(255, 255, 255, 0.15);
-	color: #f2f2f7;
-	font-size: 1em;
-	outline: none;
-	transition: background 0.3s ease, transform 0.3s ease;
-	backdrop-filter: blur(8px);
-	margin-top: 8px;
-  }
-  
-  input:focus, textarea:focus {
-	background: rgba(255, 255, 255, 0.2);
-	transform: scale(1.02);
-	box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15);
-  }
-  
-  button {
-	background-color: #ff3b30;
-	color: white;
-	border: none;
-	padding: 12px;
-	border-radius: 10px;
-	cursor: pointer;
-	transition: background 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1.2);
-	font-size: 1.2em;
-	font-weight: bold;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 10px;
-	animation: fadeInSlide 1.4s ease-out forwards;
-  }
-  
-  button:hover {
-	background-color: #ff453a;
-	transform: scale(1.08);
-  }
-  
-  ul, #noteList {
-	list-style-type: none;
-	padding: 0;
-	margin: 10px 0 0 0;
-  }
-  
-  .task-item, .note-item, .event-item {
-	background: rgba(255, 255, 255, 0.15);
-	backdrop-filter: blur(8px);
-	padding: 10px;
-	border-radius: 10px;
-	margin-bottom: 8px;
-	color: #f2f2f7;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-	transition: transform 0.3s ease;
-	animation: fadeInSlide 0.6s ease forwards;
-  }
-  
-  .task-item:hover, .note-item:hover, .event-item:hover {
-	transform: translateY(-3px) scale(1.02);
-  }
-  
-  .task-item .delete-btn, .note-item .delete-btn {
-	color: #ff3b30;
-	cursor: pointer;
-  }
-  
-  /* Стили для календаря */
-  .calendar-day {
-	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(5px);
-	border-radius: 10px;
-	padding: 5px;
-	text-align: center;
-	color: #f2f2f7;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 40px;
-	height: 40px;
-	margin: 4px;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-	transition: background 0.3s ease, transform 0.3s ease;
-	animation: fadeInSlide 1.7s ease-out forwards;
-  }
-  
-  .calendar-day:hover {
-	background: rgba(255, 255, 255, 0.2);
-	transform: scale(1.1);
-  }
-  
-  .highlighted {
-	background-color: rgba(255, 69, 58, 0.6);
-	color: white;
-	position: relative;
-	border-radius: 50%;
-	animation: scaleIn 0.4s ease-out forwards;
-  }
-  
-  .event-tooltip {
-	position: absolute;
-	bottom: 50px;
-	left: 50%;
-	transform: translateX(-50%) scale(0.9);
-	background-color: rgba(255, 255, 255, 0.9);
-	color: #333;
-	padding: 5px 10px;
-	border-radius: 8px;
-	font-size: 0.8em;
-	white-space: nowrap;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	z-index: 10;
-	opacity: 0;
-	transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-  
-  .calendar-day:hover .event-tooltip {
-	opacity: 1;
-	transform: translateX(-50%) scale(1);
-  }
-  
-  .dynamic-island {
-	position: fixed;
-	top: 20px;
-	left: 50%;
-	transform: translateX(-50%) translateY(-10px);
-	background-color: rgba(30, 30, 30, 0.9);
-	color: white;
-	padding: 10px 20px;
-	border-radius: 25px;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-	font-size: 1em;
-	font-weight: 500;
-	opacity: 0;
-	animation: islandPopIn 0.6s ease-out forwards;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-width: 200px;
-	text-align: center;
-	z-index: 100;
-  }
-  
-  .hidden {
-	display: none;
-  }
-  
-  .visible {
-	display: flex;
-	opacity: 1;
-	transform: translateX(-50%) translateY(0) scale(1);
-  }
-  
-  /* Прогресс-бар */
-  .progress-container {
-	text-align: center;
-	padding: 20px;
-	margin-top: 20px;
-	position: relative;
-  }
-  
-  .progress-circle {
-	position: relative;
-	width: 120px;
-	height: 120px;
-	margin: 0 auto;
-  }
-  
-  .progress-circle svg {
-	width: 120px;
-	height: 120px;
-	transform: rotate(-90deg);
-  }
-  
-  .progress-circle circle {
-	fill: none;
-	stroke-width: 10;
-	stroke: rgba(255, 255, 255, 0.1);
-  }
-  
-  #progress {
-	stroke: #ff3b30;
-	stroke-dasharray: 314;
-	stroke-dashoffset: 314;
-	transition: stroke-dashoffset 0.5s ease;
-  }
-  
-  .progress-circle span {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font-size: 1.5em;
-	color: #f2f2f7;
-  }
-  
-  #next-event {
-	color: #8e8e93;
-	font-size: 0.9em;
-	margin-top: 10px;
-  }
-  
-  /* Стили для мобильного модального окна события */
-  .event-modal {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 200;
-	animation: modalFadeIn 0.4s ease-out forwards;
-  }
-  
-  .event-modal .modal-content {
-	background: #1c1c1e;
-	color: #f2f2f7;
-	padding: 20px;
-	border-radius: 10px;
-	width: 90%;
-	max-width: 400px;
-	text-align: center;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-	animation: modalFadeIn 0.4s ease-out forwards;
-  }
-  
-  .event-modal h3 {
-	font-size: 1.5em;
-	margin-bottom: 10px;
-	color: #ff3b30;
-  }
-  
-  .event-modal input {
-	width: 100%;
-	padding: 12px;
-	border: none;
-	border-radius: 8px;
-	background: rgba(255, 255, 255, 0.15);
-	color: #f2f2f7;
-	font-size: 1em;
-	outline: none;
-	margin-bottom: 10px;
-  }
-  
-  .event-modal button {
-	background-color: #ff3b30;
-	color: white;
-	border: none;
-	padding: 10px;
-	border-radius: 8px;
-	width: 100%;
-	margin-top: 10px;
-	font-size: 1em;
-	cursor: pointer;
-	transition: background 0.3s ease;
-  }
-  
-  .event-modal button:hover {
-	background-color: #ff453a;
-  }
-  
-  .event-modal #cancelEventButton {
-	background-color: #8e8e93;
-	margin-top: 10px;
-  }
-  
-  .event-modal #cancelEventButton:hover {
-	background-color: #6e6e73;
-  }
-  
+    scroll-behavior: smooth;
+}
+
+/* Анимация плавного появления */
+@keyframes fadeInSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Основной стиль */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: linear-gradient(135deg, #1e1e22, #2b2b2f);
+    color: #f2f2f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    overflow-x: hidden;
+    animation: fadeInSlide 0.8s ease-out forwards;
+}
+
+/* Контейнер для всего контента */
+.container {
+    width: 100%;
+    max-width: 430px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Glassmorphism стиль */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Стиль кнопок и ввода */
+button, input, textarea {
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f2f2f7;
+    border: none;
+    font-size: 1em;
+    padding: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button {
+    background-color: #ff3b30;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff453a;
+    transform: scale(1.05);
+}
+
+input:focus, textarea:focus {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Календарный день */
+.calendar-day {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 5px;
+    color: #f2f2f7;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.calendar-day:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.highlighted {
+    background-color: rgba(255, 69, 58, 0.6);
+    color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(30, 30, 30, 0.95);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    font-size: 1em;
+    min-width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeInSlide 0.4s ease-out forwards;
+}
+
+/* Прогресс-бар контейнер в стиле glassmorphism */
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 180px;
+    margin: 0 auto;
+}
+
+/* Прогресс-бар */
+.progress-circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 20px 0;
+}
+
+.progress-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-circle circle {
+    fill: none;
+    stroke-width: 8;
+    stroke: rgba(255, 255, 255, 0.1);
+}
+
+#progress {
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-dasharray: 314;
+    stroke-dashoffset: 314;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.6s ease;
+}
+
+/* Центральный текст в прогресс-баре */
+.progress-circle span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4em;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.1);
+    padding: 8px 12px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+}
+
+/* Легкая анимация для пульсации */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.03);
+    }
+}
+
+.progress-container:hover .progress-circle {
+    animation: pulse 1.5s infinite alternate;
+}
+
+/* Стили для мобильного модального окна события */
+.event-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    animation: fadeInSlide 0.5s ease;
+}
+
+.event-modal .modal-content {
+    background: #1c1c1e;
+    color: #f2f2f7;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.event-modal h3 {
+    font-size: 1.4em;
+    color: #ff3b30;
+    margin-bottom: 15px;
+}
+
+.event-modal button {
+    background-color: #ff3b30;
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.event-modal button:hover {
+    background-color: #ff453a;
+    transform: scale(1.05);
+}

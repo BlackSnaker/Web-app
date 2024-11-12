@@ -1,11 +1,11 @@
 const CACHE_NAME = "organizer-cache-v1";
 const urlsToCache = [
   "/",
-  "/index.html",
-  "/styles.css",
-  "/script.js",
-  "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png"
+  "index.html",
+  "styles.css",
+  "script.js",
+  "icons/icon-192x192.png",
+  "icons/icon-512x512.png"
 ];
 
 // Установка сервис-воркера и кэширование ресурсов
